@@ -5,13 +5,13 @@ header("Content-Type: application/json; charset=UTF-8");
  
 // include database and object files
 include_once '../../Database.php';
-include_once 'entity.php';
-include_once '../db_config.php';  
+include_once 'office_entity.php';
+include_once '../../DbConfigs/home_db_config.php';
 
 // instantiate database and product object
 $database = new Database();
-$dbConfig = new DbConfig();
-$db = $database->getConnection($dbConfig->db_name);
+$homeDbConfig = new HomeDbConfig();
+$db = $database->getConnection($homeDbConfig->db_name);
 
 // initialize object,
 $office = new Office($db);
@@ -36,18 +36,18 @@ if($num>0){
         extract($row);
  
         $office_item=array(
-            "label" => $label,
-            "value" => $value,
+            "id" => $id,
+            "idItalianMunicipalities" => $id_italian_municipalities,
         );
  
         array_push($offices_arr, $office_item);
     }
  
-    echo json_encode($offices_arr);
+    return json_encode($offices_arr);
 }
  
 else{
-    echo json_encode(
+    return json_encode(
         array("message" => "No office found.")
     );
 }

@@ -6,12 +6,12 @@ header("Content-Type: application/json; charset=UTF-8");
 // include database and object files
 include_once '../../Database.php';
 include_once 'entity.php';
-include_once '../db_config.php';  
+include_once '../../DbConfigs/home_db_config.php';
 
 // instantiate database and product object
 $database = new Database();
-$dbConfig = new DbConfig();
-$db = $database->getConnection($dbConfig->db_name);
+$homeDbConfig = new HomeDbConfig();
+$db = $database->getConnection($homeDbConfig->db_name);
 
 // initialize object,
 $navbarPages = new NavbarPages($db);

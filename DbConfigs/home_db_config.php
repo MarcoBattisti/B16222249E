@@ -1,5 +1,5 @@
 <?php
-class DbConfig{
+class HomeDbConfig{
 
 public $db_name = "ang_home_page";
 

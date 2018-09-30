@@ -8,8 +8,8 @@ class Office{
     private $table_name = "offices";
 
     // object properties
-    public $label;
-    public $value;
+    public $id;
+    public $idItalianMunicipalities;
  
     // constructor with $db as database connection
     public function __construct($connection){
